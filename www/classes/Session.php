@@ -1,0 +1,1 @@
+<?phpclass Session{	private $session;	function __construct($session){		$this->session = $session;	}		function __get($name){		return @$this->session[$name];	}		function get($name){		return $this->$name;	}		function getFirstName(){		return $this->session['first_name'];	}		function getLastName(){		return $this->session['last_name'];	}	}?>

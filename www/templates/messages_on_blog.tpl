@@ -1,0 +1,1 @@
+<h2><?=$data[0]['name']?></h2><?foreach($data as $key=>$value):?>	<div class='message'>		<div class='message_topic'>			<h4><a href='<?=absolute_path . 'action/message/' . $data[$key]['id']?>'><?=$data[$key]['topic']?></a></h4>		</div>		<div class='message_content'>			<?=$data[$key]['content']?>		</div>	</div><?endforeach?>
