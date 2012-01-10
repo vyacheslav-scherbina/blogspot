@@ -1,1 +1,0 @@
-<?phpclass Controller_show extends Controller{	function file($name){		$path = site_path . 'files/' . $name;		$img = file_get_contents($path);		header('Content-type: image ');		return $img;			}}?>
