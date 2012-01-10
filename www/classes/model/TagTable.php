@@ -1,0 +1,1 @@
+<?phpclass TagTable extends Table{}?>
