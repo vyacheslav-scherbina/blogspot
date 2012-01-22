@@ -1,43 +1,43 @@
 <?PHP
-include 'includes/config.php';
 
-$registry = Registry::getInstance();
+define ('site_path', dirname(__FILE__) . '/');
 
-$registry->set('access_array', $access_array);
-
-$request = new Request($_REQUEST);
-$registry->set('request', $request);
+include (site_path . 'includes/config.php');
+include (site_path . 'includes/framework/FrontController.php');
+include (site_path . 'includes/framework/Request.php');
+include (site_path . 'includes/framework/Role.php');
+include (site_path . 'includes/framework/TableFactory.php');
+include (site_path . 'includes/framework/Table.php');
+include (site_path . 'includes/framework/View.php');
+include (site_path . 'includes/framework/Controller.php');
+include (site_path . 'includes/framework/SQLSpecification.php');
+include (site_path . 'includes/framework/utils_loader.php');
+include (site_path . 'includes/access_array.php');
 
 $db = new PDO(DBMS . ':host=' . host . ';dbname=' . DB, login, password);
-$registry->set('db', $db);
+$db->exec('SET NAMES utf8');
 
-$controller_path = site_path . 'classes/controllers/';
-$model_path = site_path . 'classes/model/';
-$view_path = site_path . 'classes/View/';
-$templates_path = site_path . 'templates/';
-
-$registry->set('controller_path', $controller_path);
-$registry->set('model_path', $model_path);
-$registry->set('view_path', $view_path);
-$registry->set('templates_path', $templates_path);
-
-$sess_id = @$registry->get('request')->get('PHPSESSID');
+$request = new Request($_REQUEST);
+$sess_id = @$request->get('PHPSESSID');
 
 if(!empty($sess_id)){
 	@session_start();
 }
 
-$session = new Session(@$_SESSION);
-$registry->set('session', $session);
+$models_path = site_path . 'models/';
+$model = new TableFactory($db, $models_path);
 
-$fc = new FrontController();
+$controllers_path = site_path . 'controllers/';
+$fc = new FrontController($model, $access_array, $controllers_path);
 
 try{
-	$fc->run();
+	$views_path = site_path . 'views/';
+	$fc->run($request, $views_path);
 }
 catch(Exception $e){
-	//echo $e->getMessage();//Not Found
-	header('location:' . absolute_path);
+	echo $e->getMessage();
+	//header('location:' . absolute_path);
 }
+
 
 ?>
