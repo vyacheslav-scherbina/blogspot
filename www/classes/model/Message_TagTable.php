@@ -1,1 +1,0 @@
-<?phpclass Message_TagTable extends Table{}?>
