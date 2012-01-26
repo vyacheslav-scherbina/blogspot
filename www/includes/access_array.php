@@ -76,5 +76,21 @@ $access_array = array(
 		'role' => '*',
 	),
 	
+	array(
+		'controller' => 'Controller_chat',
+		'method' => 'view',
+		'role' => Role::regular,
+	),
+	array(
+		'controller' => 'Controller_chat',
+		'method' => 'new_message',
+		'role' => Role::regular,
+	),
+	array(
+		'controller' => 'Controller_chat',
+		'method' => 'get_json',
+		'role' => Role::regular,
+	),
+	
 );
 ?>

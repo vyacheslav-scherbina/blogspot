@@ -30,6 +30,10 @@ class View{
 			return @$output;
 		}
 	}
+	
+	function json($par){
+		return json_encode($par);
+	}
 
 }
 ?>

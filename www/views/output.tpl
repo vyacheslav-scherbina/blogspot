@@ -2,6 +2,8 @@
 	<head>
 		<link rel='stylesheet' type='text/css' href='<?=absolute_path . 'style_index.css'?>' />
 		<meta content="charset=utf-8" http-equiv="Content-Type" />
+		<script src='<?=absolute_path . 'js.js'?>'></script>
+		
 	</head>
 	<body>
 		<div id='head'>

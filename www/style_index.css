@@ -76,3 +76,19 @@ a:hover{
 li{
 	margin:10px 0 10px 0
 }
+.chat_message_content{
+	background-color:#EDEFF0;
+	margin:20px 0 20px 0;
+	padding:5px;
+}
+#chat_content{
+	height:500px;
+	overflow:auto;
+	width:350px
+}
+.user_f_s_name{
+        font-size:13pt;
+        font-weight:bold;
+        text-align:center;
+        margin:10px 0 10px 0;
+}
